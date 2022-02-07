@@ -2,9 +2,9 @@
 void main()
 {
 	int choice;
-	while (i = 1)
+	while (i == 1)
 	{
-		printf("The Task that you want to perform\n");
+		printf("Enter The Task that you want to perform\n");
 		printf("1. Add Book Details\n")
 		printf("2. Delete the Book Details\n");
 		printf("3. Update the Book Details\n");
