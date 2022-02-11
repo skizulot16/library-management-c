@@ -91,6 +91,20 @@ void update_book()
 }
 void list_author()
 {
+	char aname[50];
+	printf("enter author name to search books=");
+	fflush(stdin);
+	gets(aname);
+	int i=0;
+	if(strcmp(aname,lib_var[i].author)==0)
+	{
+		printf("books of author=%s\n",lib_var[i].bookname);
+	}
+	else
+	{
+		printf("No books available of this author\n");
+	}
+	i++;
 }
 void list_genre()
 {
