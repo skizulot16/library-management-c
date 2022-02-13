@@ -9,6 +9,7 @@ struct library_struc
 	int srno;
 	char language[10];
 	int recm_age;
+	float price;
 };
 void add_book();
 void delete_book();
@@ -24,7 +25,7 @@ void main()
 {
 	int choice, count = 1;
 	while (count == 1)
-	{
+	{	system("cls");
 		printf("Enter The Task that you want to perform\n");
 		printf("1. Add Book Details\n");
 		printf("2. Delete the Book Details\n");
@@ -63,7 +64,7 @@ void main()
 }
 void add_book()
 {
-
+	system("cls");
 	printf("Book name=");
 	fflush(stdin);
 	gets(lib_var[i].bookname);
@@ -72,6 +73,8 @@ void add_book()
 	gets(lib_var[i].author);
 	printf("Pages=");
 	scanf("%d", &lib_var[i].pages);
+	printf("Price=");
+	scanf("%f",&lib_var[i].price);
 	printf("Genre=");
 	fflush(stdin);
 	gets(lib_var[i].genre);
@@ -91,6 +94,7 @@ void update_book()
 }
 void list_author()
 {
+	system("cls");
 	char aname[50];
 	printf("enter author name to search books=");
 	fflush(stdin);
@@ -111,4 +115,12 @@ void list_genre()
 }
 void view_books()
 {
+	system("cls");
+	int j=0;
+	printf("BOOK NAME\tBOOK AUTHOR\tPAGES\tPRICE\tGENRE\tLANGUAGE\tAGE\n");
+	for(j=0;j<i;j++){
+		printf("%s\t%s\t%d\t%.2f\t%s\t%s\t%d+\n",lib_var[j].bookname,lib_var[j].author,lib_var[j].pages,lib_var[j].price,lib_var[j].genre,lib_var[j].language,lib_var[j].recm_age);
+	}
+	fflush(stdin);
+	getchar();
 }
