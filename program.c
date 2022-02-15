@@ -58,6 +58,7 @@ void main()
 			view_books();
 			break;
 		case 7:
+			printf("Thank YOU FOR USING");
 			exit(0);
 			break;
 		}
@@ -145,19 +146,25 @@ void list_author()
 {
 	system("cls");
 	char aname[50];
+	int va=0,bkfd=0;
 	printf("enter author name to search books=");
 	fflush(stdin);
 	gets(aname);
-	int i=0;
-	if(strcmp(aname,lib_var[i].author)==0)
+	for(va=0;va<i;va++){
+	
+	if(strcmpi(aname,lib_var[va].author)==0)
 	{
-		printf("books of author=%s\n",lib_var[i].bookname);
+		printf("books of author=%s\n",lib_var[va].bookname);
+		bkfd++;
+		
 	}
-	else
-	{
+	}
+	if(bkfd==0){
 		printf("No books available of this author\n");
 	}
-	i++;
+	
+	fflush(stdin);
+	getchar();
 }
 void list_genre()
 {
