@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <windows.h>
 struct library_struc
 {
 	char bookname[50];
 	char author[50];
 	char genre[10];
-	int pages;
+	int pages,edition;
 	int srno;
 	char language[10];
 	int recm_age;
@@ -75,6 +76,8 @@ void add_book()
 	scanf("%d", &lib_var[i].pages);
 	printf("Price=");
 	scanf("%f",&lib_var[i].price);
+	printf("edition=");
+	scanf("%d",&lib_var[i].edition);
 	printf("Genre=");
 	fflush(stdin);
 	gets(lib_var[i].genre);
@@ -91,6 +94,52 @@ void delete_book()
 }
 void update_book()
 {
+	char n_book[50];
+	float n_price;
+	int n_edition,j,ch,temp=0,k;
+	system("cls");
+	printf("enter the book's name which you want to update: ");
+	fflush(stdin);
+	gets(n_book);
+	for(j=0;j<i;j++)
+	{
+		if(strcmpi(lib_var[j].bookname,n_book)==0)
+		{
+			temp=1;
+			k=j;
+		}
+	}
+	if(temp==1)
+	{
+		
+		printf("press 1 to update book's price.\n");
+		printf("press 2 to update book's edition.\n");
+		
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:
+				printf("enter new price: ");
+				scanf("%f",&n_price);
+				lib_var[k].price=n_price;
+				break;
+				
+			case 2:
+				printf("enter updated edition: ");
+				scanf("%d",&n_edition);
+				lib_var[k].edition=n_edition;
+				break;
+				
+			default:
+				printf("press only 1 or 2.");
+		}	
+	}
+	else
+	{
+		printf("book is not found\n");
+		sleep(2);
+	}
+	
 }
 void list_author()
 {
@@ -117,9 +166,13 @@ void view_books()
 {
 	system("cls");
 	int j=0;
-	printf("BOOK NAME\tBOOK AUTHOR\tPAGES\tPRICE\tGENRE\tLANGUAGE\tAGE\n");
-	for(j=0;j<i;j++){
-		printf("%s\t%s\t%d\t%.2f\t%s\t%s\t%d+\n",lib_var[j].bookname,lib_var[j].author,lib_var[j].pages,lib_var[j].price,lib_var[j].genre,lib_var[j].language,lib_var[j].recm_age);
+	//printf("BOOK NAME\t\t\tBOOK AUTHOR\t\t\tPAGES\t\t\tPRICE\t\t\tEDITION\t\t\tGENRE\t\t\tLANGUAGE\t\t\tAGE\n");
+	for(j=0;j<i;j++)
+	{
+		//printf("%s\t\t\t%s\t\t\t%d\t\t\t%.2f\t\t\t%d\t\t\t%s\t\t\t%s\t\t\t%d+\n",lib_var[j].bookname,lib_var[j].author,lib_var[j].pages,lib_var[j].price,lib_var[j].edition,lib_var[j].genre,lib_var[j].language,lib_var[j].recm_age);
+		printf("\n-----------------------------------------------------------------------------------------------------------------------\n");
+		printf(" BOOK NAME: %s \n BOOK'S AUTHOR NAME: %s \n PAGES: %d \n",lib_var[j].bookname,lib_var[j].author,lib_var[j].pages);
+		printf(" PRICE: %.2f \n EDITION: %d \n GENRE: %s \n LANGUAGE: %s \n AGE: %d",lib_var[j].price,lib_var[j].edition,lib_var[j].genre,lib_var[j].language,lib_var[j].recm_age);
 	}
 	fflush(stdin);
 	getchar();
