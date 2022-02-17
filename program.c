@@ -18,6 +18,7 @@ void update_book();
 void list_author();
 void list_genre();
 void view_books();
+void srh_bookname();
 
 struct library_struc lib_var[1000];
 int i = 0;
@@ -34,8 +35,9 @@ void main()
 		printf("4. List all books of given author\n");
 		printf("5. List all books of given Genre\n");
 		printf("6. View all books\n");
-		printf("7. To Exit\n");
-		printf("Enter your choice from 1 to 7\n");
+		printf("7. Search by book name\n");
+		printf("8. To Exit\n");
+		printf("Enter your choice from 1 to 8\n");
 		scanf("%d", &choice);
 		switch (choice)
 		{
@@ -58,6 +60,9 @@ void main()
 			view_books();
 			break;
 		case 7:
+			srh_bookname();
+			break;
+		case 8:
 			printf("Thank YOU FOR USING");
 			exit(0);
 			break;
@@ -168,6 +173,28 @@ void list_author()
 }
 void list_genre()
 {
+	system("cls");
+	char gtype[20];
+	int gn=0,bkfr=0;
+	printf("Enter Genre to search books=");
+	fflush(stdin);
+	gets(gtype);
+	for(gn=0;gn<i;gn++){
+	
+	if(strcmpi(gtype,lib_var[gn].genre)==0)
+	{
+		printf("Books of this genre:  %s\n",lib_var[gn].bookname);
+		bkfr++;
+		
+	}
+	}
+	if(bkfr==0){
+		printf("No books available of this genre\n");
+	}
+	
+	fflush(stdin);
+	getchar();
+
 }
 void view_books()
 {
@@ -184,3 +211,32 @@ void view_books()
 	fflush(stdin);
 	getchar();
 }
+void srh_bookname()
+{
+	system("cls");
+	char bname[20];
+	int bn=0,bknm=0;
+	printf("Enter Name of Book you want to search=");
+	fflush(stdin);
+	gets(bname);
+	for(bn=0;bn<i;bn++){
+	
+	if(strcmpi(bname,lib_var[bn].bookname)==0)
+	{
+		printf("\n-----------------------------------------------------------------------------------------------------------------------\n");
+		printf("Book details:\n");
+		printf(" BOOK NAME: %s \n BOOK'S AUTHOR NAME: %s \n PAGES: %d \n",lib_var[bn].bookname,lib_var[bn].author,lib_var[bn].pages);
+		printf(" PRICE: %.2f \n EDITION: %d \n GENRE: %s \n LANGUAGE: %s \n AGE: %d",lib_var[bn].price,lib_var[bn].edition,lib_var[bn].genre,lib_var[bn].language,lib_var[bn].recm_age);
+		bknm++;
+		
+	}
+	}
+	if(bknm==0){
+		printf("No books available of this name\n");
+	}
+	
+	fflush(stdin);
+	getchar();
+
+}
+
