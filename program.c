@@ -97,6 +97,39 @@ void add_book()
 }
 void delete_book()
 {
+	system("cls");
+	char delname[50];
+	int j,chk=0;
+	printf("Enter Book name=");
+	fflush(stdin);
+	gets(delname);
+	for(j=0;j<i;j++){
+		if(strcmpi(lib_var[j].bookname,delname)==0){
+		chk++;
+		break;}
+	}
+	if(chk==0)
+	printf("\nBOOK NOT FOUND\n");
+	else{
+	for(j;j<i;j++){
+		strcpy(lib_var[j].author,lib_var[j+1].author);
+		strcpy(lib_var[j].bookname,lib_var[j+1].bookname);
+		strcpy(lib_var[j].genre,lib_var[j+1].genre);
+		strcpy(lib_var[j].language,lib_var[j+1].language);
+		lib_var[j].edition=lib_var[j+1].edition;
+		lib_var[j].pages=lib_var[j+1].pages;
+		lib_var[j].price=lib_var[j+1].price;
+		lib_var[j].recm_age=lib_var[j+1].recm_age;
+		lib_var[j].srno=lib_var[j+1].srno;
+		
+	}
+		printf("\n %s BOOK DELETED",delname);
+		i--;
+
+
+}
+	fflush(stdin);
+	getchar();
 }
 void update_book()
 {
