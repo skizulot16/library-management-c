@@ -115,16 +115,7 @@ void delete_book()
 	printf("\nBOOK NOT FOUND\n");
 	else{
 	for(j;j<i;j++){
-		strcpy(lib_var[j].author,lib_var[j+1].author);
-		strcpy(lib_var[j].bookname,lib_var[j+1].bookname);
-		strcpy(lib_var[j].genre,lib_var[j+1].genre);
-		strcpy(lib_var[j].language,lib_var[j+1].language);
-		lib_var[j].edition=lib_var[j+1].edition;
-		lib_var[j].pages=lib_var[j+1].pages;
-		lib_var[j].price=lib_var[j+1].price;
-		lib_var[j].recm_age=lib_var[j+1].recm_age;
-		lib_var[j].srno=lib_var[j+1].srno;
-		
+		lib_var[j]=lib_var[j+1];
 	}
 		printf("\n %s BOOK DELETED",delname);
 		i--;
@@ -237,6 +228,9 @@ void view_books()
 	system("cls");
 	int j=0;
 	//printf("BOOK NAME\t\t\tBOOK AUTHOR\t\t\tPAGES\t\t\tPRICE\t\t\tEDITION\t\t\tGENRE\t\t\tLANGUAGE\t\t\tAGE\n");
+	if(i==0)
+	printf("NO BOOKS AVAILABLE\nPRESS ENTER TO CONTINUE:");
+	else{
 	for(j=0;j<i;j++)
 	{
 		//printf("%s\t\t\t%s\t\t\t%d\t\t\t%.2f\t\t\t%d\t\t\t%s\t\t\t%s\t\t\t%d+\n",lib_var[j].bookname,lib_var[j].author,lib_var[j].pages,lib_var[j].price,lib_var[j].edition,lib_var[j].genre,lib_var[j].language,lib_var[j].recm_age);
@@ -244,6 +238,7 @@ void view_books()
 		printf(" BOOK NAME: %s \n BOOK'S AUTHOR NAME: %s \n PAGES: %d \n",lib_var[j].bookname,lib_var[j].author,lib_var[j].pages);
 		printf(" PRICE: %.2f \n EDITION: %d \n GENRE: %s \n LANGUAGE: %s \n AGE: %d",lib_var[j].price,lib_var[j].edition,lib_var[j].genre,lib_var[j].language,lib_var[j].recm_age);
 	}
+}
 	fflush(stdin);
 	getchar();
 }
