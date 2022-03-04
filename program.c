@@ -63,9 +63,12 @@ void main()
 			srh_bookname();
 			break;
 		case 8:
-			printf("Thank YOU FOR USING");
+			printf("Thank YOU FOR USING...");
 			exit(0);
 			break;
+		default:
+			printf("Enter valid Input...");
+			sleep(2);
 		}
 	}
 }
