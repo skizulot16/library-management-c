@@ -183,7 +183,11 @@ void list_author()
 	
 	if(strcmpi(aname,lib_var[va].author)==0)
 	{
-		printf("books of author=%s\n",lib_var[va].bookname);
+		printf("\n-----------------------------------------------------------------------------------------------------------------------\n");
+		printf("Book details:\n");
+		printf(" BOOK NAME: %s \n BOOK'S AUTHOR NAME: %s \n PAGES: %d \n",lib_var[va].bookname,lib_var[va].author,lib_var[va].pages);
+		printf(" PRICE: %.2f \n EDITION: %d \n GENRE: %s \n LANGUAGE: %s \n AGE: %d",lib_var[va].price,lib_var[va].edition,lib_var[va].genre,lib_var[va].language,lib_var[va].recm_age);
+		
 		bkfd++;
 		
 	}
@@ -207,7 +211,11 @@ void list_genre()
 	
 	if(strcmpi(gtype,lib_var[gn].genre)==0)
 	{
-		printf("Books of this genre:  %s\n",lib_var[gn].bookname);
+		printf("\n-----------------------------------------------------------------------------------------------------------------------\n");
+		printf("Book details:\n");
+		printf(" BOOK NAME: %s \n BOOK'S AUTHOR NAME: %s \n PAGES: %d \n",lib_var[gn].bookname,lib_var[gn].author,lib_var[gn].pages);
+		printf(" PRICE: %.2f \n EDITION: %d \n GENRE: %s \n LANGUAGE: %s \n AGE: %d",lib_var[gn].price,lib_var[gn].edition,lib_var[gn].genre,lib_var[gn].language,lib_var[gn].recm_age);
+		
 		bkfr++;
 		
 	}
